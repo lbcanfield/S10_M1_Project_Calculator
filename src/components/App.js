@@ -12,6 +12,10 @@ import reducer, { initialState } from '../reducers/index';
 // Import the action-creator function 'addOne' *******************************************************
 import { addOne } from '../actions/index';
 
+import { changeOperation } from '../actions/index';
+
+// Import the action-creator function 'applyNumber' *******************************************************
+import { applyNumber } from '../actions/index';
 function App() {
      // Set up tht state for the app *******************************************************
      // This assignes state from initialState
@@ -21,6 +25,14 @@ function App() {
      // Create a click handler for the number 1 button *******************************************************
      const handleNum1Click = () => {
           dispatch(addOne());
+     }
+
+     const handleNumberClick = (number) => {
+          dispatch(applyNumber(number));
+     }
+
+     const handleOperatorClick = (operator) => {
+          dispatch(changeOperation(operator));
      }
 
      return (
@@ -47,27 +59,28 @@ function App() {
                               </div>
 
                               <div className="row">
-                                   <CalcButton value={1} onClick={handleNum1Click} />
-                                   <CalcButton value={2} />
-                                   <CalcButton value={3} />
+                                   {/* <CalcButton value={1} onClick={handleNum1Click} /> */}
+                                   <CalcButton value={1} onClick={() => handleNumberClick(1)} />
+                                   <CalcButton value={2} onClick={() => handleNumberClick(2)} />
+                                   <CalcButton value={3} onClick={() => handleNumberClick(3)} />
                               </div>
 
                               <div className="row">
-                                   <CalcButton value={4} />
-                                   <CalcButton value={5} />
-                                   <CalcButton value={6} />
+                                   <CalcButton value={4} onClick={() => handleNumberClick(4)} />
+                                   <CalcButton value={5} onClick={() => handleNumberClick(5)} />
+                                   <CalcButton value={6} onClick={() => handleNumberClick(6)} />
                               </div>
 
                               <div className="row">
-                                   <CalcButton value={7} />
-                                   <CalcButton value={8} />
-                                   <CalcButton value={9} />
+                                   <CalcButton value={7} onClick={() => handleNumberClick(7)} />
+                                   <CalcButton value={8} onClick={() => handleNumberClick(8)} />
+                                   <CalcButton value={9} onClick={() => handleNumberClick(9)} />
                               </div>
 
                               <div className="row">
-                                   <CalcButton value={"+"} />
-                                   <CalcButton value={"*"} />
-                                   <CalcButton value={"-"} />
+                                   <CalcButton value={"+"} onClick={() => handleOperatorClick('+')} />
+                                   <CalcButton value={"*"} onClick={() => handleOperatorClick('*')} />
+                                   <CalcButton value={"-"} onClick={() => handleOperatorClick('-')} />
                               </div>
 
                               <div className="row ce_button">
