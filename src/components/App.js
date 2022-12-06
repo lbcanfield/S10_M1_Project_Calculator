@@ -16,6 +16,14 @@ import { changeOperation } from '../actions/index';
 
 // Import the action-creator function 'applyNumber' *******************************************************
 import { applyNumber } from '../actions/index';
+
+import { clearDisplay } from '../actions/index';
+
+import { memoryAdd } from '../actions/index';
+
+import { memoryRecall } from '../actions/index';
+
+import { memoryClear } from '../actions/index';
 function App() {
      // Set up tht state for the app *******************************************************
      // This assignes state from initialState
@@ -35,6 +43,21 @@ function App() {
           dispatch(changeOperation(operator));
      }
 
+     const clearDisplayClick = () => {
+          dispatch(clearDisplay());
+     }
+
+     const memoryAddButton = () => {
+          dispatch(memoryAdd());
+     }
+
+     const memoryRecallButton = () => {
+          dispatch(memoryRecall());
+     }
+
+     const memoryClearButton = () => {
+          dispatch(memoryClear());
+     }
      return (
 
           <div className="App">
@@ -53,9 +76,9 @@ function App() {
                               </div>
 
                               <div className="row">
-                                   <CalcButton value={"M+"} />
-                                   <CalcButton value={"MR"} />
-                                   <CalcButton value={"MC"} />
+                                   <CalcButton value={"M+"} onClick={memoryAddButton} />
+                                   <CalcButton value={"MR"} onClick={memoryRecallButton} />
+                                   <CalcButton value={"MC"} onClick={memoryClearButton} />
                               </div>
 
                               <div className="row">
@@ -84,7 +107,7 @@ function App() {
                               </div>
 
                               <div className="row ce_button">
-                                   <CalcButton value={"CE"} />
+                                   <CalcButton value={"CE"} onClick={clearDisplayClick} />
                               </div>
 
                          </form>
