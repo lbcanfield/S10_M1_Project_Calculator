@@ -9,10 +9,19 @@ import CalcButton from './CalcButton';
 // Imported the reducer and the initial state *******************************************************
 import reducer, { initialState } from '../reducers/index';
 
+// Import the action-creator function 'addOne' *******************************************************
+import { addOne } from '../actions/index';
+
 function App() {
      // Set up tht state for the app *******************************************************
      // This assignes state from initialState
      const [state, dispatch] = useReducer(reducer, initialState);
+
+
+     // Create a click handler for the number 1 button *******************************************************
+     const handleNum1Click = () => {
+          dispatch(addOne());
+     }
 
      return (
 
@@ -38,7 +47,7 @@ function App() {
                               </div>
 
                               <div className="row">
-                                   <CalcButton value={1} />
+                                   <CalcButton value={1} onClick={handleNum1Click} />
                                    <CalcButton value={2} />
                                    <CalcButton value={3} />
                               </div>
